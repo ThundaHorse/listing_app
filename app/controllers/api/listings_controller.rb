@@ -1,8 +1,9 @@
 class Api::ListingsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
 
   def index 
-    @listings = Listing.where(user_id: current_user.id)
+    # @listings = Listing.where(user_id: current_user.id)
+    @listings = Listing.all
     render "index.json.jbuilder"
   end 
 

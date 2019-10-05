@@ -13,7 +13,7 @@ class Api::MessagesController < ApplicationController
 
     ActionCable.server.broadcast "messages_channel", {
       id: @message.id,
-      name: @message.user.name,
+      name: @message.user.first_name,
       body: @message.body,
       created_at: @message.created_at
     }
