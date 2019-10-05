@@ -15,7 +15,8 @@ class Api::MessagesController < ApplicationController
       id: @message.id,
       name: @message.user.first_name,
       body: @message.body,
-      created_at: @message.created_at
+      # created_at: @message.created_at
+      created_at: @message.formatted_time
     }
     
     render "show.json.jbuilder"
