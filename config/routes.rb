@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     get "/users/:id" => "users#show"
     post "/users" => "users#create"
 
+    # Messages 
+    get '/messages' => 'messages#index'
+    post '/messages' => 'messages#create'
+
     # Sessions 
      post "/sessions" => "sessions#create"
 
