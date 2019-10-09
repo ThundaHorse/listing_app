@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     # Users 
     get "/users/:id" => "users#show"
     post "/users" => "users#create"
+    patch "/users/:id" => "users#update"
+    delete "/users/:id" => "users#destroy"
 
     # Messages 
     get '/messages' => 'messages#index'

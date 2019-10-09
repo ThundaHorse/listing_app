@@ -2,7 +2,8 @@ class Api::ItemsController < ApplicationController
   before_action :authenticate_user
   
   def index 
-    @items = Item.all 
+    # @items = Item.where(listing_id: Listing.where(user_id: current_user.id).id) 
+    @items = Item.all
     render "index.json.jbuilder"
   end 
 
@@ -21,7 +22,8 @@ class Api::ItemsController < ApplicationController
   end 
 
   def show 
-    @item = Item.where(user_id: current_user.id)
+    # @item = Item.where(user_id: current_user.id)
+    @item = Item.find(params[:id])
     render "show.json.jbuilder"
   end 
 

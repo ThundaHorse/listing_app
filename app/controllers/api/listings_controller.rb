@@ -2,15 +2,15 @@ class Api::ListingsController < ApplicationController
   # before_action :authenticate_user
 
   def index 
-    # @listings = Listing.where(user_id: current_user.id)
-    @listings = Listing.all
+    @listings = Listing.where(user_id: current_user.id)
+    # @listings = Listing.all
     render "index.json.jbuilder"
   end 
 
   def create 
     @listing = Listing.new(
-                          user_id: current_user.id,
-                          item_id: params[:item_id]
+                          user_id: current_user.id
+                          # item_id: params[:item_id]
                           )
     if @listing.save
       render "show.json.jbuilder" 
