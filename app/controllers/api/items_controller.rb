@@ -1,6 +1,5 @@
 class Api::ItemsController < ApplicationController
-  before_action :authenticate_user
-  
+  # before_action :authenticate_user
   def index 
     @items = Item.all
     render "index.json.jbuilder"
@@ -12,7 +11,7 @@ class Api::ItemsController < ApplicationController
                     listing_id: params[:listing_id],
                     description: params[:description],
                     price: params[:price],
-                    image: params[:image]
+                    photo: params[:photo]
                     )
     if @item.save
       render "show.json.jbuilder"
