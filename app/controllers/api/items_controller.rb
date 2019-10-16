@@ -11,7 +11,8 @@ class Api::ItemsController < ApplicationController
                     name: params[:name],
                     listing_id: params[:listing_id],
                     description: params[:description],
-                    price: params[:price]
+                    price: params[:price],
+                    image: params[:image]
                     )
     if @item.save
       render "show.json.jbuilder"

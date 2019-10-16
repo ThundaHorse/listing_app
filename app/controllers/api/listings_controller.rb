@@ -8,7 +8,8 @@ class Api::ListingsController < ApplicationController
 
   def create 
     @listing = Listing.new(
-                          user_id: current_user.id
+                          user_id: current_user.id,
+                          title: params[:title]
                           )
     if @listing.save
       render "show.json.jbuilder" 
@@ -26,6 +27,7 @@ class Api::ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.user_id = params[:user_id] || @listing.user_id 
     @listing.item_id = params[:item_id] || @listing.item_id 
+    @listing.title = params[:title] || "Post"
 
     if @listing.save 
       render "show.json.jbuilder" 
