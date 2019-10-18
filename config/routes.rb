@@ -28,5 +28,7 @@ Rails.application.routes.draw do
      get "/user_items/:id" => "items#user_items"
      patch "/items/:id" => "items#update"
      delete "/items/:id" => "items#destroy"
+
+     get "/*path" => proc { [200, {}, [ActionView::Base.new.render(file: 'public/index.html')]] }
   end 
 end
