@@ -21,8 +21,6 @@ class Api::ItemsController < ApplicationController
       render json: { message: @item.errors.full_messages }, status: :unprocessable_entity
     end 
   end 
-
-  
   
   def show 
     @item = Item.find(params[:id])
@@ -50,9 +48,14 @@ class Api::ItemsController < ApplicationController
     render json: { message: "Deleted successfully" } 
   end 
 
+  def user_items 
+    @items = Item.where(listing_id: params[:id])
+    render "index.json.jbuilder"
+  end 
+
   private
     def item_params
-      # params.require(:item).permit(:name, :listing_id, :description, :price, photos: [])
-      params.require(:item).permit(:name, :listing_id, :description, :price, photos: [])      
+      params.require(:item).permit(:name, :listing_id, :description, :price, photos: [])
+      # params.require(:item).permit(:name, :listing_id, :description, :price, photos: {})      
     end
 end 
