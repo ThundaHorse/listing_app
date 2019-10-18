@@ -24,6 +24,7 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'figaro'
+gem "aws-sdk-s3", require: false
 
 gem "rspec-rails", "~> 3.8"
 gem "shoulda-matchers", "~> 4.0.1"
