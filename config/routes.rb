@@ -17,6 +17,7 @@ Rails.application.routes.draw do
      get "/listings" => "listings#index"
      post "/listings" => "listings#create"
      get "/listings/:id" => "listings#show"
+     get "/user_listings" => "listings#user_listings"
      patch "/listings/:id" => "listings#update"
      delete "/listings/:id" => "listings#destroy"
 
