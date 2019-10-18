@@ -15,6 +15,9 @@ class Api::ItemsController < ApplicationController
                     price: params[:price],
                     photos: params[:photos]
                     )
+    # @item.photos.attach(params[:photos])
+    # @item.photos.attach(params[:signed_blob_id])
+
     if @item.save
       render "show.json.jbuilder"
     else 

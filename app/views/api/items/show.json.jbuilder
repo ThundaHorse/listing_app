@@ -13,5 +13,5 @@ json.description @item.description
 # json.photos rails_blob_url(@item.photos, only_path: true)
 
 json.photos @item.photos.each do |img| 
-  json.img rails_blob_url(img, only_path: true)
+  json.img rails_blob_url(img)
 end 
