@@ -45,8 +45,13 @@ class Api::ItemsController < ApplicationController
   
   def destroy 
     @item = Item.find(params[:id]) 
-    @item.delete 
-    render json: { message: "Deleted successfully" } 
+    listing = Listing.find(@item.listing_id)
+    if listing.user_id == current_user.id 
+      @item.delete 
+      render json: { message: "Deleted successfully" } 
+    else 
+      render json: { message: "This is not your item to delete" }
+    end 
   end 
 
   def user_items 
