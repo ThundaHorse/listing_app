@@ -43,7 +43,12 @@ class Api::ListingsController < ApplicationController
 
   def destroy 
     @listing = Listing.find(params[:id])
-    @listing.delete 
-    render json: { message: "Deleted successfully" }
+
+    if @listing.user_id == current_user.id 
+      @listing.delete 
+      render json: { message: "Deleted successfully" }
+    else 
+      render json: { message: "This is not your posting" }
+    end 
   end 
 end
