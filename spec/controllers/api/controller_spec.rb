@@ -36,14 +36,60 @@ RSpec.describe Api::SessionsController, type: :controller do
   end
 end 
 
-# RSpec.describe Api::UsersController, type: :controller do 
-#   describe Api::UsersController do 
+# RSpec.describe 'Users Post' do 
+#   it 'allows users to sign up' do 
+#     user_info = {
+#       first_name: "test", 
+#       last_name: "test",
+#       email: "test@test.com",
+#       phone_number: "111",
+#       password: "p",
+#       password_confirmation: "p"
+#     }
+#     # user = User.new(user_info)
+#     post "/users", :params => user_info
+#     # expect(response).to change(User, :count).by 1
+#     expect(response).to render_template(:show)
+#   end
+# end 
+
+RSpec.describe Api::UsersController, type: :controller do 
+  # describe Api::UsersController do 
 #     it { should route(:get, 'api/users/1').to(action: :show, id: 1) }
 #     it { should route(:patch, 'api/users/2').to(action: :update, id: 2) }
 #     it { should route(:delete, 'api/users/4').to(action: :destroy, id: 4) }
 #     it { should route(:post, 'api/users').to(action: :create)}
-#   end
-# end 
+  # end
+  describe "POST" do 
+    it "successfully creates a new user" do 
+      user = User.new({
+        first_name: "test",
+        last_name: "test",
+        email: "test@test.com",
+        phone_number: "1",
+        password: "p",
+        password_confirmation: "p"
+      })
+
+      user.save
+      expect(response.status).to eq(200)
+      expect(response.message).to eq("OK")
+    end 
+
+    it "errors when missing parameters" do 
+      user = User.new({
+        first_name: "test",
+        last_name: "test",
+        phone_number: "1",
+        password: "p"
+      })
+
+      user.save 
+
+      expect(response.status).to eq(500)
+    end 
+  end 
+end 
 
 # RSpec.describe Api::ItemsController, type: :controller do 
 #   describe Api::ItemsController do

@@ -15,7 +15,8 @@ class Api::UsersController < ApplicationController
                     )
 
     if user.save
-      render json: {message: 'User created successfully'}, status: :created
+      # render json: {message: 'User created successfully'}, status: :created
+      render json: {message: 'OK'}, status: 200
     else
       render json: {errors: user.errors.full_messages}, status: :bad_request
     end
