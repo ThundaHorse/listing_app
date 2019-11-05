@@ -31,7 +31,6 @@ class Api::ListingsController < ApplicationController
   def update 
     @listing = Listing.find(params[:id])
     @listing.user_id = params[:user_id] || @listing.user_id 
-    # @listing.item_id = params[:item_id] || @listing.item_id 
     @listing.title = params[:title] || "Post"
 
     if @listing.save 
