@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :carted_products 
   has_many :items, through: :carted_products  
 
-  def calculate_subtotal 
+  def calculate_subtotal
     self.subtotal = user.cart.sum { |carted_product| carted_product.subtotal } 
   end 
 

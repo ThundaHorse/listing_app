@@ -2,8 +2,16 @@ class Api::CartedProductsController < ApplicationController
   before_action :authenticate_user
 
   def index 
-    @carted_products = current_user.cart 
+    carted_products = current_user.cart
+    @carted_products = carted_products.where(status: 1)
     render 'index.json.jbuilder' 
+  end
+
+  # Add option to re-add removed items 
+  def re_add 
+    removed_items = current_user.cart
+    @carted_products = removed_items.where(status: 2)
+    render 'index.json.jbuilder'
   end 
 
   def create 

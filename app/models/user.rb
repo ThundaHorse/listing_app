@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end 
 
   def cart 
-    CartedProduct.where(status: 1)
+    CartedProduct.where(user_id: self.id)
   end 
 end

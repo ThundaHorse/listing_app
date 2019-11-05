@@ -3,13 +3,11 @@ class Api::OrdersController < ApplicationController
 
   def index 
     @order = current_user.orders
-
     render 'index.json.jbuilder'
   end 
 
-  def create 
+  def create
     @order = Order.new(user_id: current_user.id) 
-
     render 'show.json.jbuilder'
   end 
 

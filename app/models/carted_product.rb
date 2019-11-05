@@ -5,6 +5,12 @@ class CartedProduct < ApplicationRecord
   enum status: [:empty, :added, :removed]
 
   def subtotal 
-    quantity * item.price 
+    quantity * item.price
+  end 
+
+  def cart_total
+    total = 0
+    CartedProduct.all.each { |i| total += i.subtotal }
+    total
   end 
 end
