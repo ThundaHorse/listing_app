@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :orders
   has_many :carted_products 
 
-
   def user_listings 
     Listing.find_by(user_id: self.id)
   end 

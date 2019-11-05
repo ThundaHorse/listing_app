@@ -9,14 +9,14 @@ class Api::CartedProductsController < ApplicationController
   def create 
     @carted_product = CartedProduct.new(
                                         user_id: current_user.id,
-                                        product_id: params[:product_id],
+                                        item_id: params[:item_id],
                                         quantity: params[:quantity],
-                                        status: 0 
+                                        status: 1 
                                         )
     if @carted_product.save 
       render 'show.json.jbuilder'
     else 
-      render json: {message: "Houston we've got a problem" }
+      render json: {message: @carted_product.errors.full_messages }
     end 
   end 
 
