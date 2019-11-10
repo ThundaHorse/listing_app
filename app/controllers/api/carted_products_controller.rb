@@ -28,6 +28,12 @@ class Api::CartedProductsController < ApplicationController
     end 
   end 
 
+  def update 
+    @carted_product = CartedProduct.find(params[:id])
+    @carted_product.update(status: 1)
+    render json: {message: "Successfully added to cart"}
+  end 
+
   def destroy 
     @carted_product = CartedProduct.find(params[:id]) 
     @carted_product.update(status: 2)
