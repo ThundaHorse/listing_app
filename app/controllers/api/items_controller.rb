@@ -1,7 +1,6 @@
 class Api::ItemsController < ApplicationController
   # before_action :authenticate_user
   # before_action :item_params, except: [:index, :show, :delete]
-
   def index 
     @items = Item.all
     render "index.json.jbuilder"
